@@ -39,7 +39,7 @@
 
 .modal-title {
   flex-grow: 1;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 40px;
   color: #FFFFFF;
@@ -50,7 +50,7 @@
 .modal-exit-button {
   background-color: #D4190C;
   color: #FFFFFF;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 20px;
   border: none;
@@ -93,7 +93,7 @@
   border: 1px solid #F1F5F9;
   background-color: #F1F5F9;
   border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
@@ -108,7 +108,7 @@
 .start-game-button {
   background-color: #0AB169;
   color: #FFFFFF;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 28px;
   border: none;

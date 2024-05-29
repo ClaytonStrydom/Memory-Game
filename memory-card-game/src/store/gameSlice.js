@@ -43,7 +43,12 @@ const gameSlice = createSlice({
       state.playerNames.player1 = player1;
       state.playerNames.player2 = player2;
     },
-    resetGame: () => initialState,
+    resetGame: state => {
+      state.cards = shuffleCards(state.cards.map(card => ({ ...card, isFlipped: false }))); // Reset all cards to face down
+      state.flippedCards = [];
+      state.scores = { player1: 0, player2: 0 };
+      state.currentPlayer = 'player1';
+    }
   },
 });
 

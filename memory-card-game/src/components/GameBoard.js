@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from './Cards'; // Adjust the path to your Card component
 import { flipCard, addFlippedCard, resetFlippedCards, increaseScore, resetGame } from '../store/gameSlice'; // Import resetGame action
+import avatar1 from '../assets/astronaut1.png';
+import avatar2 from '../assets/astronaut2.png';
+import '../styles/Card.css';
 
 const GameBoard = () => {
   const dispatch = useDispatch();
@@ -43,15 +46,19 @@ const GameBoard = () => {
   };
 
   return (
-    <div className="game-container">
-      <div className="game-header">
-        <h1>Memory</h1>
-        <div className="game-controls">
-          <button className="exit-button" onClick={handleExit}>Exit</button>
-          <button className="reset-button" onClick={handleReset}>Reset Game</button>
-        </div>
+    <div>
+      <div className="game-controls">
+        <h1 className="game-title">Memory</h1>
+        <button className="reset-button" onClick={handleReset}>Restart Game</button>
+        <button className="exit-button" onClick={handleExit}>Exit Game</button>
       </div>
+      <div className="game-container">
+      
+      
       <div className="player-info left">
+        <div className="player-avatar">
+          <img src={avatar1} alt="Avatar" className="avatar" />
+        </div>
         <h2>{playerNames.player1}</h2>
         <p>Score: {scores.player1}</p>
         {currentPlayer === 'player1' && <p className="turn-indicator">It's Your Turn</p>}
@@ -62,11 +69,16 @@ const GameBoard = () => {
         ))}
       </div>
       <div className="player-info right">
+        <div className="player-avatar">
+          <img src={avatar2} alt="Avatar" className="avatar" />
+        </div>
         <h2>{playerNames.player2}</h2>
         <p>Score: {scores.player2}</p>
         {currentPlayer === 'player2' && <p className="turn-indicator">It's Your Turn</p>}
       </div>
     </div>
+    </div>
+    
   );
 };
 
