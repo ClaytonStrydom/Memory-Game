@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Card.css';// Ensure you create a CSS file for card styles
+import '../styles/Card.css';
 
 const Card = ({ card, onClick }) => (
   <div className={`card ${card.isFlipped ? 'flipped' : ''}`} onClick={() => onClick(card.id)}>

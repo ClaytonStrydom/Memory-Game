@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setPlayerNames } from '../store/gameSlice'; // Import setPlayerNames action
-import '../styles/PlayerModal.css'; // Adjust the path to your CSS file if necessary
+import { setPlayerNames } from '../store/gameSlice';
+import '../styles/PlayerModal.css';
 import avatar1 from '../assets/astronaut1.png';
 import avatar2 from '../assets/astronaut2.png';
 
@@ -12,7 +12,7 @@ const PlayersModal = ({ show, handleClose, handleStartGame }) => {
 
   const handleSubmit = () => {
     if (player1.trim() !== '' && player2.trim() !== '') {
-      dispatch(setPlayerNames({ player1, player2 })); // Dispatch action to set player names
+      dispatch(setPlayerNames({ player1, player2 }));
       handleStartGame(player1, player2);
       handleClose();
     } else {

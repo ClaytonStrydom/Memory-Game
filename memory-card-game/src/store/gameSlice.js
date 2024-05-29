@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { shuffleCards } from '../utils/cardData'; // Utility function to shuffle cards
+import { shuffleCards } from '../utils/cardData';
 
 const initialState = {
   cards: shuffleCards(),
@@ -44,7 +44,7 @@ const gameSlice = createSlice({
       state.playerNames.player2 = player2;
     },
     resetGame: state => {
-      state.cards = shuffleCards(state.cards.map(card => ({ ...card, isFlipped: false }))); // Reset all cards to face down
+      state.cards = shuffleCards(state.cards.map(card => ({ ...card, isFlipped: false })));
       state.flippedCards = [];
       state.scores = { player1: 0, player2: 0 };
       state.currentPlayer = 'player1';

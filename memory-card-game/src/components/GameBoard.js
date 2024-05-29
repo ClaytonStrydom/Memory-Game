@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Card from './Cards'; // Adjust the path to your Card component
-import { flipCard, addFlippedCard, resetFlippedCards, increaseScore, resetGame } from '../store/gameSlice'; // Import resetGame action
+import Card from './Cards';
+import { flipCard, addFlippedCard, resetFlippedCards, increaseScore, resetGame } from '../store/gameSlice';
 import avatar1 from '../assets/astronaut1.png';
 import avatar2 from '../assets/astronaut2.png';
 import '../styles/Card.css';
@@ -37,11 +37,11 @@ const GameBoard = () => {
   };
 
   const handleReset = () => {
-    dispatch(resetGame()); // Dispatch the resetGame action
+    dispatch(resetGame());
   };
 
   const handleExit = () => {
-    // Implement exit logic here, e.g., redirect to home or exit the game
+  
     console.log('Exiting game...');
   };
 

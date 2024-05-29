@@ -26,7 +26,6 @@ suits.forEach(suit => {
   });
 });
 
-// Add jokers
 cards.push(
   { id: id++, name: 'Joker', suit: 'red', color: 'red', image: require('../assets/cardImages/red_joker.png' )},
   { id: id++, name: 'Joker', suit: 'black', color: 'black', image: require('../assets/cardImages/black_joker.png' )},
