@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap'; // Assuming you're using Bootstrap for styling
+import '../styles/PlayerModal.css';
 
 const PlayersModal = ({ show, handleClose, handleStartGame }) => {
   const [player1, setPlayer1] = useState('');
@@ -15,9 +16,12 @@ const PlayersModal = ({ show, handleClose, handleStartGame }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
-      <Modal.Header closeButton>
-        <Modal.Title>Enter Players' Names</Modal.Title>
+    <Modal show={show} onHide={handleClose} centered dialogClassName="modal-80w modal-80h">
+      <Modal.Header className="d-flex justify-content-between align-items-center">
+        <Modal.Title className="text-center">Enter Players' Names</Modal.Title>
+        <Button variant="danger" onClick={handleClose}>
+          Exit
+        </Button>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -42,9 +46,6 @@ const PlayersModal = ({ show, handleClose, handleStartGame }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
         <Button variant="primary" onClick={handleSubmit}>
           Start Game
         </Button>

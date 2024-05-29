@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Card from './Cards';
+import Card from './Cards'; // Ensure correct path
 import { flipCard, addFlippedCard, resetFlippedCards } from '../store/gameSlice';
 
 const GameBoard = () => {
@@ -36,7 +36,9 @@ const GameBoard = () => {
       <div className="player-info left">
         <h2>Player 1</h2>
         <p>Score: {scores.player1}</p>
-        {currentPlayer === 'Player 1' && <p>It's Your Turn</p>}
+        <p className="turn-indicator">
+          {currentPlayer === 'Player 1' ? "It's Your Turn" : ''}
+        </p>
       </div>
       <div className="game-board">
         {cards.map(card => (
@@ -46,7 +48,9 @@ const GameBoard = () => {
       <div className="player-info right">
         <h2>Player 2</h2>
         <p>Score: {scores.player2}</p>
-        {currentPlayer === 'Player 2' && <p>It's Your Turn</p>}
+        <p className="turn-indicator">
+          {currentPlayer === 'Player 2' ? "It's Your Turn" : ''}
+        </p>
       </div>
     </div>
   );

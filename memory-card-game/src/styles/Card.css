@@ -8,21 +8,35 @@ body, html {
     background-color: #f0f0f0;
   }
 
- .game-container {
+ 
+.game-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  text-align: center;
+  width: 90%;
+  max-width: 1400px;
   padding: 20px;
 }
   
-  .player-info {
+.player-info {
   flex: 1;
-  background-color: white;
+  background-color: rgb(0, 97, 177);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 0 10px;
+  text-align: center;
+}
+
+.player-info h2,
+.player-info p {
+  margin: 10px 0;
+}
+
+.player-info .turn-indicator {
+  color: red;
+  font-weight: bold;
+  background-color: yellow; /* Temporary background color for visibility */
 }
 
   .game-board {
@@ -30,11 +44,10 @@ body, html {
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(6, 1fr);
     gap: 10px;
-    width: 750px;
-    max-width: 1200px;
+    width: 1050px;
     margin: 0 auto;
     padding: 20px;
-    background-color: white;
+    background-color: rgb(88, 160, 255);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
@@ -64,12 +77,12 @@ body, html {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   .card-back {
-    background: #333;
+    background: #293a85;
     color: white;
     display: flex;
     justify-content: center;

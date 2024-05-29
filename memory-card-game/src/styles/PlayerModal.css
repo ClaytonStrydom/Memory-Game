@@ -1,0 +1,9 @@
+.modal-80w {
+  width: 80vw ;
+  max-width: 1600px;
+}
+
+.modal-80h {
+  height: 80vh;
+  max-height: 800px;
+}
