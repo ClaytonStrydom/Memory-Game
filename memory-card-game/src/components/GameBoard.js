@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Card from './Cards'; // Ensure correct path
-import { flipCard, addFlippedCard, resetFlippedCards } from '../store/gameSlice';
+import Card from './Cards';
+import { flipCard, addFlippedCard, resetFlippedCards, increaseScore, resetGame } from '../store/gameSlice'; // Import resetGame action
 
 const GameBoard = () => {
   const dispatch = useDispatch();
@@ -9,6 +9,7 @@ const GameBoard = () => {
   const flippedCards = useSelector(state => state.game.flippedCards);
   const currentPlayer = useSelector(state => state.game.currentPlayer);
   const scores = useSelector(state => state.game.scores);
+  const playerNames = useSelector(state => state.game.playerNames);
 
   useEffect(() => {
     if (flippedCards.length === 2) {
@@ -21,9 +22,10 @@ const GameBoard = () => {
         }, 1000);
       } else {
         dispatch(resetFlippedCards());
+        dispatch(increaseScore(currentPlayer));
       }
     }
-  }, [flippedCards, dispatch]);
+  }, [flippedCards, currentPlayer, dispatch, playerNames]);
 
   const handleCardClick = (id) => {
     dispatch(flipCard(id));
@@ -31,14 +33,28 @@ const GameBoard = () => {
     dispatch(addFlippedCard(card));
   };
 
+  const handleReset = () => {
+    dispatch(resetGame()); // Dispatch the resetGame action
+  };
+
+  const handleExit = () => {
+    // Implement exit logic here, e.g., redirect to home or exit the game
+    console.log('Exiting game...');
+  };
+
   return (
     <div className="game-container">
+      <div className="game-header">
+        <h1>Memory</h1>
+        <div className="game-controls">
+          <button className="exit-button" onClick={handleExit}>Exit</button>
+          <button className="reset-button" onClick={handleReset}>Reset Game</button>
+        </div>
+      </div>
       <div className="player-info left">
-        <h2>Player 1</h2>
+        <h2>{playerNames.player1}</h2>
         <p>Score: {scores.player1}</p>
-        <p className="turn-indicator">
-          {currentPlayer === 'Player 1' ? "It's Your Turn" : ''}
-        </p>
+        {currentPlayer === 'player1' && <p className="turn-indicator">It's Your Turn</p>}
       </div>
       <div className="game-board">
         {cards.map(card => (
@@ -46,11 +62,9 @@ const GameBoard = () => {
         ))}
       </div>
       <div className="player-info right">
-        <h2>Player 2</h2>
+        <h2>{playerNames.player2}</h2>
         <p>Score: {scores.player2}</p>
-        <p className="turn-indicator">
-          {currentPlayer === 'Player 2' ? "It's Your Turn" : ''}
-        </p>
+        {currentPlayer === 'player2' && <p className="turn-indicator">It's Your Turn</p>}
       </div>
     </div>
   );

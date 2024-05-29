@@ -18,7 +18,8 @@ suits.forEach(suit => {
   cardNames.forEach(name => {
     cards.push({
       id: id++,
-      name: `${name} of ${suit}`,
+      name: `${name}`,
+      suit: suit,
       color: colors[suit],
       image: require(`../assets/cardImages/${name}_of_${suit}.png`),
     });
@@ -27,8 +28,8 @@ suits.forEach(suit => {
 
 // Add jokers
 cards.push(
-  { id: id++, name: 'Joker', color: 'red', image: require('../assets/cardImages/red_joker.png' )},
-  { id: id++, name: 'Joker', color: 'black', image: require('../assets/cardImages/black_joker.png' )},
+  { id: id++, name: 'Joker', suit: 'red', color: 'red', image: require('../assets/cardImages/red_joker.png' )},
+  { id: id++, name: 'Joker', suit: 'black', color: 'black', image: require('../assets/cardImages/black_joker.png' )},
 );
 
 export const shuffleCards = () => {

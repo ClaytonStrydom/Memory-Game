@@ -104,3 +104,31 @@ body, html {
     height: 100%;
     object-fit: cover;
   }
+
+
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .game-controls {
+    display: flex;
+  }
+  
+  .exit-button,
+  .reset-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .exit-button:hover,
+  .reset-button:hover {
+    background-color: #0056b3; /* Darker shade of primary color */
+  }

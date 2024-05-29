@@ -7,6 +7,7 @@ const initialState = {
   matchedCards: [],
   currentPlayer: 'player1',
   scores: { player1: 0, player2: 0 },
+  playerNames: { player1: '', player2: '' },
 };
 
 const gameSlice = createSlice({
@@ -33,9 +34,19 @@ const gameSlice = createSlice({
       state.flippedCards = [];
       state.currentPlayer = state.currentPlayer === 'player1' ? 'player2' : 'player1';
     },
+    increaseScore: (state, action) => {
+      const player = action.payload;
+      state.scores[player]++;
+    },
+    setPlayerNames: (state, action) => {
+      const { player1, player2 } = action.payload;
+      state.playerNames.player1 = player1;
+      state.playerNames.player2 = player2;
+    },
+    resetGame: () => initialState,
   },
 });
 
-export const { flipCard, addFlippedCard, resetFlippedCards } = gameSlice.actions;
+export const { flipCard, addFlippedCard, resetFlippedCards, setPlayerNames, increaseScore, resetGame } = gameSlice.actions;
 
 export default gameSlice.reducer;

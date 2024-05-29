@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap'; // Assuming you're using Bootstrap for styling
-import '../styles/PlayerModal.css';
+import { useDispatch } from 'react-redux';
+import { setPlayerNames } from '../store/gameSlice'; // Import setPlayerNames action
+import '../styles/PlayerModal.css'; // Adjust the path to your CSS file if necessary
+import avatar1 from '../assets/astronaut1.png';
+import avatar2 from '../assets/astronaut2.png';
 
 const PlayersModal = ({ show, handleClose, handleStartGame }) => {
+  const dispatch = useDispatch();
   const [player1, setPlayer1] = useState('');
   const [player2, setPlayer2] = useState('');
 
   const handleSubmit = () => {
     if (player1.trim() !== '' && player2.trim() !== '') {
+      dispatch(setPlayerNames({ player1, player2 })); // Dispatch action to set player names
       handleStartGame(player1, player2);
       handleClose();
     } else {
@@ -16,41 +21,43 @@ const PlayersModal = ({ show, handleClose, handleStartGame }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered dialogClassName="modal-80w modal-80h">
-      <Modal.Header className="d-flex justify-content-between align-items-center">
-        <Modal.Title className="text-center">Enter Players' Names</Modal.Title>
-        <Button variant="danger" onClick={handleClose}>
-          Exit
-        </Button>
-      </Modal.Header>
-      <Modal.Body>
-        <Form>
-          <Form.Group controlId="player1">
-            <Form.Label>Player 1:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Player 1's Name"
-              value={player1}
-              onChange={(e) => setPlayer1(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="player2">
-            <Form.Label>Player 2:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Player 2's Name"
-              value={player2}
-              onChange={(e) => setPlayer2(e.target.value)}
-            />
-          </Form.Group>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={handleSubmit}>
-          Start Game
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <div className={`modal-background ${show ? 'show' : ''}`} onClick={handleClose}>
+      <div className="modal-container" onClick={e => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2 className="modal-title centered">Memory</h2>
+          <button className="modal-exit-button" onClick={handleClose}>Exit Game</button>
+        </div>
+        
+        <div className="modal-body">
+          <h2 className="modal-title centered">Are you ready to play?</h2>
+          <div className="player-inputs">
+            <div className="player">
+              <img src={avatar1} alt="Avatar" className="avatar" />
+              <input
+                type="text"
+                placeholder="Enter Player 1's Name"
+                value={player1}
+                onChange={(e) => setPlayer1(e.target.value)}
+                className="input-field"
+              />
+            </div>
+            <div className="player">
+              <img src={avatar2} alt="Avatar" className="avatar" />
+              <input
+                type="text"
+                placeholder="Enter Player 2's Name"
+                value={player2}
+                onChange={(e) => setPlayer2(e.target.value)}
+                className="input-field"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="modal-footer">
+          <button className="start-game-button" onClick={handleSubmit}>Let's Play</button>
+        </div>
+      </div>
+    </div>
   );
 };
 
