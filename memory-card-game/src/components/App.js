@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 import PlayersModal from './PlayersModal';
-import GameBoard from './GameBoard';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import GameBoard from './GameBoard'; // Replace with your actual game board component
+import '../styles/App.css'; // Adjust the path to your CSS file if necessary
 
 const App = () => {
-  const [showModal, setShowModal] = useState(true);
-  const [players, setPlayers] = useState({ player1: '', player2: '' });
-  const [gameStarted, setGameStarted] = useState(false);
+  const [showModal, setShowModal] = useState(true); // Initial state to show modal
 
-  const handleClose = () => setShowModal(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   const handleStartGame = (player1, player2) => {
-    setPlayers({ player1, player2 });
-    setGameStarted(true);
+    console.log(`Starting game with players: ${player1} and ${player2}`);
+    // Perform any actions needed to start the game
   };
 
   return (
-    <div className="App">
-      <PlayersModal
-        show={showModal}
-        handleClose={handleClose}
-        handleStartGame={handleStartGame}
-      />
-      {gameStarted && <GameBoard players={players} />}
+    <div className="app">
+      {showModal && (
+        <PlayersModal
+          show={showModal}
+          handleClose={handleCloseModal}
+          handleStartGame={handleStartGame}
+        />
+      )}
+      {!showModal && <GameBoard />} {/* Render game board when modal is closed */}
     </div>
   );
 };

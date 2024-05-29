@@ -22,14 +22,14 @@ const PlayersModal = ({ show, handleClose, handleStartGame }) => {
 
   return (
     <div className={`modal-background ${show ? 'show' : ''}`} onClick={handleClose}>
-      <div className="modal-container" onClick={e => e.stopPropagation()}>
+      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2 className="modal-title centered">Memory</h2>
+          <h2 className="modal-title">Memory</h2>
           <button className="modal-exit-button" onClick={handleClose}>Exit Game</button>
         </div>
         
         <div className="modal-body">
-          <h2 className="modal-title centered">Are you ready to play?</h2>
+          <h2 className="modal-title">Are you ready to play?</h2>
           <div className="player-inputs">
             <div className="player">
               <img src={avatar1} alt="Avatar" className="avatar" />

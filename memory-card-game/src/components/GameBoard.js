@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Card from './Cards';
+import Card from './Cards'; // Adjust the path to your Card component
 import { flipCard, addFlippedCard, resetFlippedCards, increaseScore, resetGame } from '../store/gameSlice'; // Import resetGame action
 
 const GameBoard = () => {
